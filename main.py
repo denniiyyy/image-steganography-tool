@@ -32,8 +32,6 @@ def main():
     p_analyze.add_argument("--stego", "-s", required=True, help="Stego image path")
     p_analyze.add_argument("--chart", help="Optional path to save histogram plot")
 
-    # test-all command
-    subparsers.add_parser("test-all", help="Run test suite on all sample files")
 
     args = parser.parse_args()
 
@@ -73,9 +71,6 @@ def main():
             plot_histograms(args.cover, args.stego, save_path=args.chart)
             print(f"Histogram chart saved to: {args.chart}")
 
-    elif args.command == "test-all":
-        from run_analysis import run_full_suite
-        run_full_suite()
 
 
 if __name__ == "__main__":

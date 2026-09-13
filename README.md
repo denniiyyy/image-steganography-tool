@@ -1,10 +1,5 @@
 # Image Steganography Suite (IKB 21303)
 
-[![Python 3.8+](https://img.shields.io/badge/Python-3.8%2B-blue.svg)](https://www.python.org/)
-[![GUI-Tkinter](https://img.shields.io/badge/GUI-Tkinter-green.svg)](https://docs.python.org/3/library/tkinter.html)
-[![Assignment](https://img.shields.io/badge/Course-IKB%2021303-orange.svg)]()
-[![Status](https://img.shields.io/badge/Status-Completed-brightgreen.svg)]()
-
 A robust, spatial-domain **Least Significant Bit (LSB) Image Steganography Tool** developed for **Universiti Kuala Lumpur - Malaysian Institute of Information Technology (UniKL MIIT)** under course **IKB 21303: Cryptography and Steganography (Assignment 2)**.
 
 This suite provides both a user-friendly **Graphical User Interface (GUI)** and a scriptable **Command-Line Interface (CLI)** to hide, extract, verify, and statistically analyze arbitrary secret files embedded inside lossless 24-bit PNG carrier images.
@@ -37,25 +32,6 @@ This suite provides both a user-friendly **Graphical User Interface (GUI)** and 
   - **Pixel Delta Analysis**: Calculates exact modified pixel count and percentage.
 - **RGB Histogram Visualization**: Side-by-side comparative histogram curves and delta bar charts (`Stego - Cover`) for each color channel.
 - **Dual Interface**: Modern multi-tab Tkinter desktop GUI and flexible command-line flags.
-
----
-
-## 📐 Binary Packet Protocol
-
-Data is packed into a sequential binary stream before bitwise substitution into carrier pixels:
-
-```
-+----------------+---------------------+-------------------+---------------------+------------------------+-------------------+
-|  Magic Bytes   | Ext Length (1 Byte) | Extension String  | Payload Size (4 B)  | Raw Secret Payload     |  CRC-32 Checksum  |
-|  "STEG" (4 B)  |    unsigned char    |   UTF-8 String    |  uint32 (Big-End)   |  (Variable Length N)   |  uint32 (Big-End) |
-+----------------+---------------------+-------------------+---------------------+------------------------+-------------------+
-```
-
-### Bitwise Substitution Mechanism
-For each payload bit $b \in \{0, 1\}$ and carrier channel byte $C$:
-$$C' = (C \mathbin{\&} \mathtt{0xFE}) \mid b$$
-During extraction, the bit is retrieved using:
-$$b = C' \mathbin{\&} \mathtt{0x01}$$
 
 ---
 
@@ -135,37 +111,6 @@ You can launch the GUI using either of the following methods:
 
 ---
 
-### Option B: Command-Line Interface (CLI)
-
-The tool supports headless CLI operations for batch processing or scripting.
-
-#### 1. Embed a Secret File
-```bash
-python main.py embed --cover samples/cover.png --secret samples/secret.txt --output output/stego.png
-```
-*Arguments:*
-- `--cover` / `-c`: Path to the cover image.
-- `--secret` / `-s`: Path to the secret file to conceal.
-- `--output` / `-o`: Output path for the generated stego image (default: `output/stego.png`).
-
-#### 2. Extract a Hidden File
-```bash
-python main.py extract --stego output/stego.png --dest output/extracted
-```
-*Arguments:*
-- `--stego` / `-i`: Path to the stego image.
-- `--dest` / `-d`: Destination directory or explicit filename for extracted secret.
-
-#### 3. Analyze Image Quality & Histograms
-```bash
-python main.py analyze --cover samples/cover.png --stego output/stego.png --chart output/histogram.png
-```
-*Arguments:*
-- `--cover` / `-c`: Path to the original cover image.
-- `--stego` / `-s`: Path to the stego image.
-- `--chart`: *(Optional)* Filepath to save the exported Matplotlib histogram comparison plot.
-
----
 
 ## 📊 Metrics & Quality Benchmark Reference
 
@@ -179,25 +124,6 @@ python main.py analyze --cover samples/cover.png --stego output/stego.png --char
 
 ---
 
-## 🧪 Testing with Sample Files
-
-The `samples/` directory includes test files ready for verification:
-
-```bash
-# Embed text secret
-python main.py embed -c samples/cover.png -s samples/secret.txt -o output/stego_txt.png
-
-# Embed PDF document
-python main.py embed -c samples/cover.png -s samples/secret.pdf -o output/stego_pdf.png
-
-# Embed Word document
-python main.py embed -c samples/cover.png -s samples/secret.docx -o output/stego_docx.png
-
-# Embed Image secret
-python main.py embed -c samples/cover.png -s samples/secret.jpg -o output/stego_jpg.png
-```
-
----
 
 ## 📜 Academic Note
 
