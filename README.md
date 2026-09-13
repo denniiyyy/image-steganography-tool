@@ -47,6 +47,11 @@ This suite provides both a user-friendly **Graphical User Interface (GUI)** and 
 ├── gui.py               # Tkinter GUI (Tabbed interface & Matplotlib canvas)
 ├── stego_core.py        # Core LSB embedding, extraction, & packet formatting
 ├── analysis.py          # Quality metrics (MSE, PSNR, SSIM, Entropy) & plotting
+├── screenshots/         # Application UI screenshots
+│   ├── tab1_embed.png   # Tab 1: Embed screen
+│   ├── tab2_extract.png # Tab 2: Extract screen
+│   ├── tab3_analysis.png# Tab 3: Analysis & Histogram screen
+│   └── tab4_about.png   # Tab 4: About & Instructions screen
 ├── samples/             # Sample cover and secret payload files
 │   ├── cover.png        # Sample carrier image (742x983)
 │   ├── secret.docx      # Sample Word document
@@ -108,6 +113,36 @@ You can launch the GUI using either of the following methods:
   - Renders embedded interactive Red, Green, and Blue channel histogram curves alongside delta distribution charts.
 - **About & Instructions**:
   - Course information, student credentials, and operating guidelines.
+
+---
+
+## 🖼️ User Interface (UI) Screenshots
+
+### 1. Hide Data (Embed) Tab
+The **Hide Data** tab allows users to select a carrier image and secret payload file. It computes carrier capacity in real-time, displays image dimensions, and embeds the payload using 1-bit LSB substitution.
+
+![Tab 1 - Hide Data (Embed)](screenshots/tab1_embed.png)
+
+---
+
+### 2. Extract Data (Reveal) Tab
+The **Extract Data** tab enables users to load any stego image to reveal hidden content. It reads packet headers, detects the original file format, validates data integrity using CRC-32, and saves the recovered file.
+
+![Tab 2 - Extract Data (Reveal)](screenshots/tab2_extract.png)
+
+---
+
+### 3. Quality & Histogram Analysis Tab
+The **Quality & Histogram Analysis** tab calculates quantitative image fidelity metrics (MSE, PSNR, SSIM, Entropy, and File Size Delta) and displays comparative Red, Green, and Blue channel histogram curves and difference distribution charts.
+
+![Tab 3 - Quality & Histogram Analysis](screenshots/tab3_analysis.png)
+
+---
+
+### 4. About & Instructions Tab
+The **About & Instructions** tab provides course information, group member details, supported formats, and operating instructions.
+
+![Tab 4 - About & Instructions](screenshots/tab4_about.png)
 
 ---
 
