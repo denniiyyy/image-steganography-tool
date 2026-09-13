@@ -1,0 +1,11 @@
+HOW TO RUN THE PROGRAM:
+-----------------------
+Please follow these two steps to set up and run the program:
+
+STEP 1: INSTALL REQUIREMENTS
+1. Run the following command to install the necessary libraries:
+   pip install -r requirements.txt
+
+STEP 2: RUN THE PROGRAM
+1. Once the installation is complete, open the project folder in your File Explorer.
+2. Double-click the file named "run.bat" to launch the application.
